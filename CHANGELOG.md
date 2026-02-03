@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/nguyenvanduocit/google-mcp/compare/v1.1.0...v1.2.0) (2026-02-03)
+
+
+### Features
+
+* add YouTube tools and Google Chat get-user-info endpoint ([7ec678e](https://github.com/nguyenvanduocit/google-mcp/commit/7ec678e4ea4106ae08d963f294d358c625d60fba))
+
 ## [1.1.0](https://github.com/nguyenvanduocit/google-mcp/compare/v1.0.0...v1.1.0) (2025-08-20)
 
 
