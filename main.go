@@ -46,6 +46,10 @@ func main() {
 		tools.RegisterGChatTool(mcpServer)
 	}
 
+	if isEnabled("youtube") {
+		tools.RegisterYouTubeTools(mcpServer)
+	}
+
 	if err := server.ServeStdio(mcpServer); err != nil {
 		panic(fmt.Sprintf("Server error: %v", err))
 	}

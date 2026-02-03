@@ -16,6 +16,7 @@ Kiro-style Spec Driven Development implementation using claude code slash comman
 
 ### Active Specifications
 - `get-thread-messages`: Enable users to retrieve messages from Google Chat threads
+- `get-user-info`: Retrieve username and display name for Google Chat users
 - Check `.kiro/specs/` for active specifications
 - Use `/kiro:spec-status [feature-name]` to check progress
 

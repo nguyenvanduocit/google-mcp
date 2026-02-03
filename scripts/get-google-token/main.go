@@ -107,7 +107,7 @@ func getTokenFromWeb(config *oauth2.Config) *oauth2.Token {
 	})
 
 	// Determine the port for the local server
-	port := "8080"
+	port := "8081"
 	redirectURL := fmt.Sprintf("http://localhost:%s/oauth2/callback", port)
 
 	// Update the configuration with the redirect URL

@@ -75,6 +75,12 @@ func RegisterGChatTool(s *server.MCPServer) {
 		mcp.WithString("page_token", mcp.Description("Page token for pagination")),
 	)
 
+	// Get user info tool
+	getUserInfoTool := mcp.NewTool("gchat_get_user_info",
+		mcp.WithDescription("Get username and display name for a Google Chat user by user ID"),
+		mcp.WithString("user_id", mcp.Required(), mcp.Description("Google Chat user ID in format 'users/123456789'")),
+	)
+
 	s.AddTool(listSpacesTool, util.ErrorGuard(gChatListSpacesHandler))
 	s.AddTool(sendMessageTool, util.ErrorGuard(gChatSendMessageHandler))
 	s.AddTool(listUsersTool, util.ErrorGuard(gChatListUsersHandler))
@@ -84,6 +90,7 @@ func RegisterGChatTool(s *server.MCPServer) {
 	s.AddTool(archiveChatThreadTool, util.ErrorGuard(gChatArchiveThreadHandler))
 	s.AddTool(deleteChatThreadTool, util.ErrorGuard(gChatDeleteThreadHandler))
 	s.AddTool(listAllUsersTool, util.ErrorGuard(gChatListAllUsersHandler))
+	s.AddTool(getUserInfoTool, util.ErrorGuard(gChatGetUserInfoHandler))
 }
 
 func gChatListSpacesHandler(arguments map[string]interface{}) (*mcp.CallToolResult, error) {
@@ -146,14 +153,14 @@ func gChatListUsersHandler(arguments map[string]interface{}) (*mcp.CallToolResul
 
 	// Collect all users from all spaces with deduplication
 	userEmails := make(map[string]map[string]interface{})
-	
+
 	for _, space := range spaces.Spaces {
 		spaceUsers, err := getAllUsersFromSpace(space.Name, space.DisplayName)
 		if err != nil {
 			// Continue with other spaces if one fails
 			continue
 		}
-		
+
 		for _, user := range spaceUsers {
 			if userEmail, ok := user["email"].(string); ok && userEmail != "" {
 				if existingUser, exists := userEmails[userEmail]; exists {
@@ -176,7 +183,7 @@ func gChatListUsersHandler(arguments map[string]interface{}) (*mcp.CallToolResul
 			}
 		}
 	}
-	
+
 	// Convert to slice
 	var allUsers []map[string]interface{}
 	for _, user := range userEmails {
@@ -202,14 +209,14 @@ func gChatListUsersHandler(arguments map[string]interface{}) (*mcp.CallToolResul
 func getAllUsersFromSpace(spaceName, spaceDisplayName string) ([]map[string]interface{}, error) {
 	var allUsers []map[string]interface{}
 	pageToken := ""
-	
+
 	for {
 		// Get members with pagination
 		listCall := services.DefaultGChatService().Spaces.Members.List(spaceName).
 			PageSize(1000).
 			ShowGroups(true).
 			UseAdminAccess(true)
-		
+
 		if pageToken != "" {
 			listCall = listCall.PageToken(pageToken)
 		}
@@ -228,7 +235,7 @@ func getAllUsersFromSpace(spaceName, spaceDisplayName string) ([]map[string]inte
 					"type":        member.Member.Type,
 					"role":        member.Role,
 				}
-				
+
 				// Extract email from user name
 				if strings.HasPrefix(member.Member.Name, "users/") {
 					userPart := strings.TrimPrefix(member.Member.Name, "users/")
@@ -236,11 +243,11 @@ func getAllUsersFromSpace(spaceName, spaceDisplayName string) ([]map[string]inte
 						userInfo["email"] = userPart
 					}
 				}
-				
+
 				allUsers = append(allUsers, userInfo)
 			}
 		}
-		
+
 		// Check if there are more pages
 		if members.NextPageToken == "" {
 			break
@@ -485,7 +492,7 @@ func gChatGetThreadMessagesHandler(arguments map[string]interface{}) (*mcp.CallT
 		"nextPageToken": messages.NextPageToken,
 		"threadName":    threadName,
 	}
-	
+
 	for _, msg := range messages.Messages {
 		messageInfo := map[string]interface{}{
 			"name":       msg.Name,
@@ -539,6 +546,60 @@ func gChatDeleteThreadHandler(arguments map[string]interface{}) (*mcp.CallToolRe
 	yamlResult, err := yaml.Marshal(result)
 	if err != nil {
 		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(yamlResult)), nil
+}
+
+func findUserInSpaces(targetUserID string) (map[string]interface{}, bool, error) {
+	spaces, err := services.DefaultGChatService().Spaces.List().Do()
+	if err != nil {
+		return nil, false, fmt.Errorf("failed to list spaces: %v", err)
+	}
+
+	for _, space := range spaces.Spaces {
+		members, err := services.DefaultGChatService().Spaces.Members.List(space.Name).
+			PageSize(1000).
+			ShowGroups(true).
+			UseAdminAccess(true).
+			Do()
+		if err != nil {
+			continue
+		}
+
+		for _, member := range members.Memberships {
+			if member.Member != nil && member.Member.Name == targetUserID {
+				return map[string]interface{}{
+					"name":        member.Member.Name,
+					"displayName": member.Member.DisplayName,
+					"type":        member.Member.Type,
+				}, true, nil
+			}
+		}
+	}
+
+	return nil, false, nil
+}
+
+func gChatGetUserInfoHandler(arguments map[string]interface{}) (*mcp.CallToolResult, error) {
+	userID := arguments["user_id"].(string)
+
+	if !strings.HasPrefix(userID, "users/") {
+		return mcp.NewToolResultError("Invalid user ID format. Must start with 'users/'"), nil
+	}
+
+	userInfo, found, err := findUserInSpaces(userID)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("Error searching for user: %v", err)), nil
+	}
+
+	if !found {
+		return mcp.NewToolResultError("User not found in accessible spaces"), nil
+	}
+
+	yamlResult, err := yaml.Marshal(userInfo)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("Failed to format user info: %v", err)), nil
 	}
 
 	return mcp.NewToolResultText(string(yamlResult)), nil
