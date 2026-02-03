@@ -2,7 +2,7 @@
 
 ## Architecture
 
-The Google Kit follows a modular MCP (Model Context Protocol) server architecture:
+The Google MCP follows a modular MCP (Model Context Protocol) server architecture:
 - **Server Layer**: MCP protocol handler and request routing
 - **Tools Layer**: Individual Google service implementations (Calendar, Gmail, Chat)
 - **Services Layer**: Google API client management and OAuth handling  
@@ -14,7 +14,7 @@ The Google Kit follows a modular MCP (Model Context Protocol) server architectur
 - **Primary Language**: Go for high performance, concurrency, and strong typing
 - **Minimum Version**: Go 1.23.2 required
 - **Build Configuration**: CGO disabled for static binaries
-- **Module**: `github.com/nguyenvanduocit/google-kit`
+- **Module**: `github.com/nguyenvanduocit/google-mcp`
 
 ## Core Dependencies
 

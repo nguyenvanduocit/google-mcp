@@ -6,8 +6,8 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"github.com/mark3labs/mcp-go/server"
-	"github.com/nguyenvanduocit/google-kit/services"
-	"github.com/nguyenvanduocit/google-kit/util"
+	"github.com/nguyenvanduocit/google-mcp/services"
+	"github.com/nguyenvanduocit/google-mcp/util"
 	"google.golang.org/api/chat/v1"
 	"gopkg.in/yaml.v3"
 )
