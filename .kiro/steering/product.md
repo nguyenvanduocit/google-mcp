@@ -2,7 +2,7 @@
 
 ## Product Overview
 
-Google Kit is a Model Context Protocol (MCP) server implementation that bridges AI models with Google Workspace services. It enables AI assistants like Claude to interact with Google Calendar, Gmail, and Google Chat through a standardized interface, allowing for seamless automation and integration of Google services in AI workflows.
+Google MCP is a Model Context Protocol (MCP) server implementation that bridges AI models with Google Workspace services. It enables AI assistants like Claude to interact with Google Calendar, Gmail, and Google Chat through a standardized interface, allowing for seamless automation and integration of Google services in AI workflows.
 
 ## Core Features
 

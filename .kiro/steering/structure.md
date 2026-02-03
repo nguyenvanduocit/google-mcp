@@ -15,7 +15,7 @@
 
 ### Build Output
 - **bin/**: Compiled binaries and credential files (gitignored)
-- **google-kit**: Built executable for distribution
+- **google-mcp**: Built executable for distribution
 
 ## Subdirectory Structures
 
@@ -138,8 +138,8 @@ import (
 ### Local Imports Last
 ```go
 import (
-    "github.com/nguyenvanduocit/google-kit/services"
-    "github.com/nguyenvanduocit/google-kit/util"
+    "github.com/nguyenvanduocit/google-mcp/services"
+    "github.com/nguyenvanduocit/google-mcp/util"
 )
 ```
 

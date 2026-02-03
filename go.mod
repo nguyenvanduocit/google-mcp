@@ -1,4 +1,4 @@
-module github.com/nguyenvanduocit/google-kit
+module github.com/nguyenvanduocit/google-mcp
 
 go 1.23.2
 

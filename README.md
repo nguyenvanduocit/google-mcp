@@ -1,6 +1,6 @@
-# Google Kit - Model Context Protocol (MCP) Server
+# Google MCP - Model Context Protocol (MCP) Server
 
-The Model Context Protocol (MCP) implementation in Google Kit enables AI models to interact with Google services through a standardized interface.
+The Model Context Protocol (MCP) implementation in Google MCP enables AI models to interact with Google services through a standardized interface.
 
 ## Prerequisites
 
@@ -18,7 +18,7 @@ The Model Context Protocol (MCP) implementation in Google Kit enables AI models 
 1. Install the server:
 
 ```bash
-go install github.com/nguyenvanduocit/google-kit@latest
+go install github.com/nguyenvanduocit/google-mcp@latest
 ```
 
 2. Create a `.env` file with your configuration:
@@ -40,8 +40,8 @@ https://developers.google.com/workspace/chat/authenticate-authorize-chat-user
 ```json
 {
   "mcpServers": {
-    "google_kit": {
-      "command": "google-kit",
+    "google_mcp": {
+      "command": "google-mcp",
       "args": ["-env", "/path/to/.env"]
     }
   }

@@ -9,7 +9,7 @@ import (
 
 	"github.com/joho/godotenv"
 	"github.com/mark3labs/mcp-go/server"
-	"github.com/nguyenvanduocit/google-kit/tools"
+	"github.com/nguyenvanduocit/google-mcp/tools"
 )
 
 func main() {

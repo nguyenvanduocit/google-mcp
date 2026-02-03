@@ -10,8 +10,8 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"github.com/mark3labs/mcp-go/server"
-	"github.com/nguyenvanduocit/google-kit/services"
-	"github.com/nguyenvanduocit/google-kit/util"
+	"github.com/nguyenvanduocit/google-mcp/services"
+	"github.com/nguyenvanduocit/google-mcp/util"
 	"google.golang.org/api/option"
 	"google.golang.org/api/youtube/v3"
 	"gopkg.in/yaml.v3"
