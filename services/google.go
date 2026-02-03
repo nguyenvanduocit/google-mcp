@@ -58,6 +58,7 @@ func ListGoogleScopes() []string {
 		calendar.CalendarScope,
 		calendar.CalendarEventsScope,
 		youtube.YoutubeScope,
+		youtube.YoutubeForceSslScope,
 		youtube.YoutubeUploadScope,
 		youtube.YoutubepartnerChannelAuditScope,
 		youtube.YoutubepartnerScope,
