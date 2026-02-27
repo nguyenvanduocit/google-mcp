@@ -1,0 +1,38 @@
+{
+    "generation_info": {
+        "timestamp": "2026-02-27T15:35:50.082337",
+        "main_model": "glm-5",
+        "generator_version": "1.1.0",
+        "repo_path": "/Users/firegroup/projects/google-mcp",
+        "commit_id": null,
+        "completed_at": "2026-02-27T15:59:48.215386"
+    },
+    "statistics": {
+        "total_components": 70,
+        "leaf_nodes": 70,
+        "max_depth": 5
+    },
+    "pipeline_state": {
+        "stages_completed": [
+            "dependency_analysis",
+            "module_clustering",
+            "documentation_generation"
+        ],
+        "modules": {}
+    },
+    "files_generated": [
+        "README.md",
+        "calendar.md",
+        "codebase_map.json",
+        "gchat.md",
+        "gmail.md",
+        "graph.html",
+        "initial_module_tree.json",
+        "metadata.json",
+        "module_tree.json",
+        "overview.md",
+        "services.md",
+        "utilities.md",
+        "youtube.md"
+    ]
+}
