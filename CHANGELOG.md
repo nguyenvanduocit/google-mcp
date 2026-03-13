@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.2](https://github.com/nguyenvanduocit/google-mcp/compare/v1.1.1...v1.1.2) (2026-03-13)
+
+
+### Bug Fixes
+
+* checkout tagged commit in goreleaser to fix tag mismatch ([1e4c121](https://github.com/nguyenvanduocit/google-mcp/commit/1e4c121f683ce57a552b2e9d1871eed1d396f8bb))
+
 ## [1.1.1](https://github.com/nguyenvanduocit/google-mcp/compare/v1.1.0...v1.1.1) (2026-03-13)
 
 
