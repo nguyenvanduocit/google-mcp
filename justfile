@@ -2,10 +2,10 @@ build:
   CGO_ENABLED=0 go build -ldflags="-s -w" -o ./bin/dev-kit ./main.go
 
 build-cli:
-  CGO_ENABLED=0 go build -ldflags="-s -w" -o ./bin/google-cli ./cmd/cli/
+  CGO_ENABLED=0 go build -ldflags="-s -w" -o ./bin/google-cli ./cmd/google-cli/
 
 install-cli:
-  go install ./cmd/cli/
+  go install ./cmd/google-cli/
 
 docs:
   go run scripts/docs/update-doc.go

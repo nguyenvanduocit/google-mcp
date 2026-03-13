@@ -119,7 +119,7 @@ In addition to the MCP server, `google-mcp` ships a standalone CLI binary (`goog
 ```bash
 just install-cli
 # or
-go install github.com/nguyenvanduocit/google-mcp/cmd/cli@latest
+go install github.com/nguyenvanduocit/google-mcp/cmd/google-cli@latest
 ```
 
 ### Quick Start
