@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.0.0 (2026-03-13)
+
+
+### Features
+
+* add base64 encoding support and Google token retrieval script - Add encoding/base64 import for handling encoded data in Gmail tools - Add get-google-token script with documentation for OAuth token management ([993a827](https://github.com/nguyenvanduocit/google-mcp/commit/993a827a845620c91ea77473f437b06e8b5237f1))
+* Add Claude Code spec-driven development framework ([078743f](https://github.com/nguyenvanduocit/google-mcp/commit/078743ff9676a2de82413bf1595d685b28234d28))
+* add CLI package and update README with CLI usage ([8641274](https://github.com/nguyenvanduocit/google-mcp/commit/86412743987fd1fa9d346b4ff704cda8ab4ece2f))
+* add YouTube tools and Google Chat get-user-info endpoint ([7aad523](https://github.com/nguyenvanduocit/google-mcp/commit/7aad523e9488f368719ce91d515b960220db4315))
+* Enhance Google Chat integration with advanced messaging and user tools ([a8be96d](https://github.com/nguyenvanduocit/google-mcp/commit/a8be96d475d5431e5382f47fb066f46bb12509be))
+* Improve error handling in Google Chat integration - Implement robust error logging and user feedback mechanisms for messaging failures ([71a58dc](https://github.com/nguyenvanduocit/google-mcp/commit/71a58dcab41a5598bf0caaf3c43e89b808b18c4f))
+* init ([9373af8](https://github.com/nguyenvanduocit/google-mcp/commit/9373af8ab286c527545de6f91fca654fc1fd4aae))
+
 ## [1.2.0](https://github.com/nguyenvanduocit/google-mcp/compare/v1.1.0...v1.2.0) (2026-02-03)
 
 
