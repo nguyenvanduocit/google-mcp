@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.3](https://github.com/nguyenvanduocit/google-mcp/compare/v1.1.2...v1.1.3) (2026-03-13)
+
+
+### Bug Fixes
+
+* add explicit archive IDs for homebrew brew formula ([01f4010](https://github.com/nguyenvanduocit/google-mcp/commit/01f4010a65a9afbe0e04ea856e6755868f1bc2ec))
+
 ## [1.1.2](https://github.com/nguyenvanduocit/google-mcp/compare/v1.1.1...v1.1.2) (2026-03-13)
 
 
