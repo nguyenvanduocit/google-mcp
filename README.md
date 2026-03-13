@@ -110,6 +110,63 @@ Delete a Gmail filter by its ID.
 Delete a Gmail label by its ID.
 
 
+## CLI Usage
+
+In addition to the MCP server, `google-mcp` ships a standalone CLI binary (`google-cli`) for direct terminal use — no MCP client needed.
+
+### Installation
+
+```bash
+just install-cli
+# or
+go install github.com/nguyenvanduocit/google-mcp/cmd/cli@latest
+```
+
+### Quick Start
+
+```bash
+export GOOGLE_AI_API_KEY=your-api-key
+# or
+google-cli --env .env <command> [flags]
+```
+
+### Commands
+
+| Command | Description |
+|---------|-------------|
+| `list-events` | List Google Calendar events |
+| `create-event` | Create a calendar event |
+| `update-event` | Update a calendar event |
+| `list-emails` | List Gmail emails |
+| `send-email` | Send an email via Gmail |
+| `get-email` | Get email details |
+| `send-chat-message` | Send a Google Chat message |
+| `list-chat-spaces` | List Chat spaces |
+| `search-youtube` | Search YouTube videos |
+| `get-video-details` | Get YouTube video details |
+
+### Examples
+
+```bash
+# List calendar events
+google-cli list-events --calendar-id primary
+
+# Send an email
+google-cli send-email --to recipient@example.com --subject "Hello" --body "World"
+
+# Search YouTube
+google-cli search-youtube --query "Go programming"
+
+# JSON output
+google-cli list-emails --output json | jq '.[].subject'
+```
+
+### Flags
+
+Every command accepts:
+- `--env string` — Path to `.env` file
+- `--output string` — Output format: `text` (default) or `json`
+
 ## License
 
 This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
